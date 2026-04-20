@@ -1,5 +1,7 @@
 # global-sentinel-mcp
 
+<!-- mcp-name: io.github.ykshah1309/global-sentinel-mcp -->
+
 An async MCP server unifying **prediction markets, global news events, aviation state,
 and internet-infrastructure telemetry** into one alternative-data layer for macro and
 financial analysis.
