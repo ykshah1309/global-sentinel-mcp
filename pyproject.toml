@@ -1,0 +1,75 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "global-sentinel-mcp"
+version = "0.1.0"
+description = "Async MCP server aggregating Polymarket, GDELT, OpenSky, and Cloudflare Radar for macro and financial analysis"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.11"
+keywords = ["mcp", "finance", "alternative-data", "polymarket", "gdelt", "opensky", "cloudflare-radar"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "httpx>=0.27.0",
+    "pandas>=2.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "respx>=0.21.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
+
+[project.scripts]
+global-sentinel-mcp = "global_sentinel_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/ykshah1309/global-sentinel-mcp"
+Issues = "https://github.com/ykshah1309/global-sentinel-mcp/issues"
+
+# CRITICAL: src layout needs explicit package declaration
+[tool.hatch.build.targets.wheel]
+packages = ["src/global_sentinel_mcp"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/README.md",
+    "/LICENSE",
+    "/CHANGELOG.md",
+    "/server.json",
+    "/pyproject.toml",
+]
+
+# CRITICAL: without this, all async tests silently skip
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+ignore_missing_imports = true

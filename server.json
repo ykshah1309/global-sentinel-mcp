@@ -1,0 +1,106 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/registry/server.schema.json",
+  "name": "io.github.ykshah1309/global-sentinel-mcp",
+  "description": "Async MCP server unifying Polymarket, GDELT, OpenSky, and Cloudflare Radar into one alternative-data layer for macro and financial analysis.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ykshah1309/global-sentinel-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ykshah1309/global-sentinel-mcp"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "ykshah1309",
+    "url": "https://github.com/ykshah1309"
+  },
+  "keywords": [
+    "finance",
+    "macro",
+    "alternative-data",
+    "prediction-markets",
+    "polymarket",
+    "gdelt",
+    "opensky",
+    "cloudflare-radar",
+    "bgp",
+    "geopolitics"
+  ],
+  "runtime": "python",
+  "runtimeVersion": ">=3.11",
+  "packages": [
+    {
+      "registry": "pypi",
+      "name": "global-sentinel-mcp",
+      "version": "0.1.0"
+    }
+  ],
+  "install": {
+    "command": "uvx",
+    "args": ["global-sentinel-mcp"]
+  },
+  "tools": [
+    {
+      "name": "get_prediction_odds",
+      "description": "Polymarket crowd-sourced probability for a macro event query."
+    },
+    {
+      "name": "get_prediction_event_by_id",
+      "description": "Fetch a specific Polymarket event's odds by id or slug."
+    },
+    {
+      "name": "lookup_aircraft_state",
+      "description": "Latest OpenSky state vector for an N-Number or ICAO24 hex."
+    },
+    {
+      "name": "convert_nnumber",
+      "description": "Convert between FAA N-Number and ICAO24 hex (offline, no network)."
+    },
+    {
+      "name": "get_global_events",
+      "description": "High-impact GDELT 2.0 events for a country, ranked by Goldstein scale."
+    },
+    {
+      "name": "check_network_anomalies",
+      "description": "Cloudflare Radar BGP hijacks/leaks and regional outage annotations."
+    },
+    {
+      "name": "get_macro_alert",
+      "description": "Composite convergence signal from GDELT events + Cloudflare outages."
+    }
+  ],
+  "configuration": {
+    "env": [
+      {
+        "name": "OPENSKY_CLIENT_ID",
+        "required": false,
+        "description": "OpenSky OAuth2 client id (preferred since 2025 migration)."
+      },
+      {
+        "name": "OPENSKY_CLIENT_SECRET",
+        "required": false,
+        "description": "OpenSky OAuth2 client secret."
+      },
+      {
+        "name": "OPENSKY_USERNAME",
+        "required": false,
+        "description": "OpenSky Basic Auth username (legacy accounts only)."
+      },
+      {
+        "name": "OPENSKY_PASSWORD",
+        "required": false,
+        "description": "OpenSky Basic Auth password (legacy accounts only)."
+      },
+      {
+        "name": "CLOUDFLARE_API_TOKEN",
+        "required": false,
+        "description": "Cloudflare API token with Radar read permissions. Required for BGP and outage tools."
+      },
+      {
+        "name": "LOG_LEVEL",
+        "required": false,
+        "default": "INFO",
+        "description": "Python log level (DEBUG, INFO, WARNING, ERROR)."
+      }
+    ]
+  }
+}

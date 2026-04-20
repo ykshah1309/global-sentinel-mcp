@@ -1,0 +1,47 @@
+name: Feature Request
+description: Propose a new tool or data source
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please fill out the form below.
+
+  - type: dropdown
+    id: data-source
+    attributes:
+      label: Data Source
+      description: Which data source does this relate to?
+      options:
+        - Polymarket
+        - OpenSky
+        - GDELT
+        - Cloudflare Radar
+        - New data source
+    validations:
+      required: true
+
+  - type: input
+    id: tool-name
+    attributes:
+      label: Proposed Tool Name
+      description: What should the MCP tool be called?
+      placeholder: "get_something"
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Analytical Use Case
+      description: Describe the macro/financial analysis use case this enables.
+    validations:
+      required: true
+
+  - type: input
+    id: api-docs
+    attributes:
+      label: Upstream API Docs Link
+      description: Link to the upstream API documentation.
+      placeholder: "https://..."

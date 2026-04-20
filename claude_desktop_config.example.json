@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "global-sentinel": {
+      "command": "uvx",
+      "args": ["global-sentinel-mcp"]
+    }
+  }
+}
